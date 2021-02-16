@@ -1,0 +1,7 @@
+[report]
+omit =
+    setup.py
+    lazyprofiler/__main__.py
+    lazyprofiler/_version.py
+    versioneer.py
+    tests/*
