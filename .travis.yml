@@ -1,40 +1,35 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
 python:
-  - "3.6"
-  - "3.7"
-  - "3.8"
-  - "3.9"
-
+- '3.6'
+- '3.7'
+- '3.8'
+- '3.9'
 install:
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-    else
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    fi
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes
-  - conda update -q conda
-  - conda install conda-build anaconda-client pytest pytest-cov
-  - conda config --set auto_update_conda no
-  - conda build conda.recipe --no-test
-  - conda install --use-local lazyprofiler
-  - conda info -a
+- if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+  -O miniconda.sh; else wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  -O miniconda.sh; fi
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
+- conda config --set always_yes yes
+- conda update -q conda
+- conda install conda-build anaconda-client pytest pytest-cov
+- conda config --set auto_update_conda no
+- conda build conda.recipe --no-test
+- conda install --use-local lazyprofiler
+- conda info -a
 script:
-  - pytest -v --color=yes --cov=lazyprofiler tests
+- pytest -v --color=yes --cov=lazyprofiler tests
 after_success:
-  - conda install -c conda-forge codecov
-  - codecov
+- conda install -c conda-forge codecov
+- codecov
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
   skip_existing: true
   user: __token__
   password:
-    secure: lDbbKlxoBx1Q2FHlTAETm1J/p3UDzTXkWlkStmJ4f4+URVpg+mIYS24qIljTkPY01ViRA4gt9XRS8D4l4OjAP6hpJZNGhUCAEvnVJk7g2xSCiRWLwy+UjuSjCCE9P1ZeYBxJ1qNA1RsBFso6fSSP0taMyPnGMxBIUUKTCfnicqbJYoMJulxhYDzWFzKtMSEhrmpStPEJ0YHufbmmhIxbMiQ8HRAL6RefoVx4rTMk+n+wseHRr69iIvvFRyK6ocwndiXbu/uiiGyQoEw0y3KwIBv55O+VSJzI+DHoDefDjUv4ol/CZ02LQEZAhpWLDHYBrCNFWmvii3wtxDO1h4Lpe4QAUptJxT/6jGDn0+gN2rD1yCvP9g/w/Xy/aFU/McLqi/vNXU/8UOtQ+qSSm5PMCdaasRu6rk0//6bo9Fir4v7Ww5AycWznDagR6pcyrRNQar4mVzwbx0PKzDmLYqnuaNcnRVxDVcv/j571l6oZUJL/ry+HYir+fbnvkPGwDBbwRpp8BlyJ6JWtdVvX2Fe81UTXB9NMFAHqLiOsmV5TVOAeGhlicfbv+OqGLb+aeulWSuiENUPQ51YGZdaEdOZYvg3y+zWx62QUORxbF2mqK8CpPyDqT7owDjjtgHyVnjnuPR5YG+i/3ruAGRpB678UNz1bghDTSMgyXf+9ylqHEWg=
+    secure: S/S0Z8JxptmIzu7ro4Y1OJY04KDc94Cm8T3T4b+x1xfbS8QnjIS4mtDLFq2qtEKEc0fL7Kl+ZzdAruVwd96eNIwdxCOOtCkAuKlSzORHVqa/GQmtUpRLPzb1cGc98uFavFqbwM1odvf2rltuH3HjCrokaDXbFwFIVonKh/fldeDCfqcJt0hQTHtINwmAIUdNNo7HYDSr44HLEsPmCcyWLR4f4l2D+JQm4Lv4ZiaJnPMWHJR4F5gh33ZRQ8WPI6eO8yveMAI+7T71YyQ3afZl3Na5XxN219jsuH4A/1+tCSE/7xQWmCCmIrFYXZjzsKO2XE77P0DvBrFGm/15jX3rSdDPdoWRCtToCrlPACa7g0p8uJ0X61mXdXRY2ozcLCKgj2BsfalEste5Z61WKzO2pmj7Pp4P6gp4XOWtJoCYVNO+hnlfR/KppudwdnMhTQ4mLGTJjdmMPp6gdoOZme717fsGMwxMApgSNXYYNeI8OmVCpbtnsTCH6lwvrC6H2yqUT4Uk07nqf6c8K322mdtMlktXKAqMJaHJea+x++bWvhyQCYpH6bnoWYSxD1DsrY55nKPMt0sQLhTFHAcnQJ2Q5XH3HbinEWi7eVCkQ3aDcZ4Mq/KR0qdCbasvGmdwM+kii44aqgoNiSXG9OWLgNGjD0Uc4YTai4PgUrZBsHA6tf8=
   on:
     tags: true
     repo: shankarpandala/lazyprofiler
