@@ -302,7 +302,6 @@ class Logger:
             if t_sleep > 0:
                 time.sleep(t_sleep)
 
-
 def start_log(file_name=None):
     if file_name is not None:
         if os.path.isfile(file_name + ".csv"):
