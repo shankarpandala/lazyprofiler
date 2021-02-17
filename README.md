@@ -1,8 +1,8 @@
 # lazyprofiler
-[![CircleCI](https://img.shields.io/travis/shankarpandala/lazyprofiler.svg)](https://travis-ci.org/shankarpandala/lazyprofiler)
+[![TravisCI](https://img.shields.io/travis/shankarpandala/lazyprofiler.svg)](https://travis-ci.org/shankarpandala/lazyprofiler)
 [![CircleCI](https://circleci.com/gh/shankarpandala/lazyprofiler.svg?style=svg)](https://circleci.com/gh/shankarpandala/lazyprofiler)
-[![CircleCI](https://codecov.io/gh/shankarpandala/lazyprofiler/branch/master/graph/badge.svg)](https://codecov.io/gh/shankarpandala/lazyprofiler)
-
+[![CodeCov](https://codecov.io/gh/shankarpandala/lazyprofiler/branch/master/graph/badge.svg)](https://codecov.io/gh/shankarpandala/lazyprofiler)
+[![Downloads](https://pepy.tech/badge/lazyprofiler)](https://pepy.tech/project/lazyprofiler)
 -------------------------------------------
 
 Lazy Profiler is a simple utility to collect CPU, GPU, RAM and GPU Memory stats while the program is running.
